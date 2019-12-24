@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace UnityEngine
@@ -32,18 +33,19 @@ namespace UnityEngine
 
         public void Start()
         {
+            Console.WriteLine("Start unity");
             clock.Start();
         }
 
         public void Stop()
         {
+            Console.WriteLine("Stop unity");
             clock.Stop();
         }
 
         public void Update()
         {
             var ct = clock.ElapsedTicks / (double) System.Diagnostics.Stopwatch.Frequency;
-
             if (Fps > 1e-6f)
             {
                 if (nextUpdateCall > ct)
@@ -66,9 +68,9 @@ namespace UnityEngine
                 var go = gameObjects[i];
                 var components = go.components;
 
-                for (int componentIdx = 0; componentIdx < components.Count; i++)
+                for (int componentIdx = 0; componentIdx < components.Count; componentIdx++)
                 {
-                    var component = components[i];
+                    var component = components[componentIdx];
                     if (component.enabled)
                         component.InternalPreUpdate();
                 }
@@ -79,9 +81,9 @@ namespace UnityEngine
                 var go = gameObjects[i];
                 var components = go.components;
 
-                for (int componentIdx = 0; componentIdx < components.Count; i++)
+                for (int componentIdx = 0; componentIdx < components.Count; componentIdx++)
                 {
-                    var component = components[i];
+                    var component = components[componentIdx];
                     if (component.enabled)
                         component.CallUpdate();
                 }
@@ -92,9 +94,9 @@ namespace UnityEngine
                 var go = gameObjects[i];
                 var components = go.components;
 
-                for (int componentIdx = 0; componentIdx < components.Count; i++)
+                for (int componentIdx = 0; componentIdx < components.Count; componentIdx++)
                 {
-                    var component = components[i];
+                    var component = components[componentIdx];
                     if (component.enabled)
                         component.CallLateUpdate();
                 }

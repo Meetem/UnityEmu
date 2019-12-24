@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace UnityEngine
 {
-    public class MonoBehaviour
+    public class MonoBehaviour : Object
     {
         public GameObject gameObject { get; internal set; }
         private bool _enabled = true;
@@ -16,7 +16,7 @@ namespace UnityEngine
             set => SetEnable(value);
         }
         
-        internal MonoBehaviour()
+        protected MonoBehaviour()
         {
             coroutines = new UnityEmulatorCoroutines(this);
         }

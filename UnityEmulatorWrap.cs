@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 
 namespace UnityEngine
@@ -28,18 +29,27 @@ namespace UnityEngine
 
         private void UnityLoop()
         {
-            Emulator.Start();
-            
-            while (!stop)
+            try
             {
-                Emulator.Update();
+                Emulator.Start();
+
+                while (!stop)
+                {
+                    Emulator.Update();
+                }
+
+                Emulator.Stop();
             }
-            
-            Emulator.Stop();
+            catch (Exception e)
+            {
+                Debug.LogErrorFormat("Unhandled exception {0}", e);
+                stop = true;
+            }
         }
 
         public void Stop()
         {
+            Console.WriteLine("Stop unity thread");
             stop = true;
             t.Join();
             t = null;

@@ -3,11 +3,16 @@ using System.Linq;
 
 namespace UnityEngine
 {
-    public class GameObject
+    public class GameObject : Object
     {
         internal List<MonoBehaviour> components = new List<MonoBehaviour>();
         private Dictionary<string, List<MonoBehaviour>> componentMapping = new Dictionary<string, List<MonoBehaviour>>();
 
+        internal GameObject()
+        {
+            
+        }
+        
         public static GameObject Instantiate(UnityEmulator onEmulator = null)
         {
             var emu = onEmulator ?? UnityEmulator.Instance;

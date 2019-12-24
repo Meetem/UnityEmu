@@ -38,12 +38,14 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Application.cs" />
         <Compile Include="Coroutines\Coroutine.cs" />
         <Compile Include="Coroutines\UnityEmulatorCoroutines.cs" />
         <Compile Include="Coroutines\WaitForSeconds.cs" />
         <Compile Include="Debug.cs" />
         <Compile Include="GameObject.cs" />
         <Compile Include="Mathf.cs" />
+        <Compile Include="Object.cs" />
         <Compile Include="Time.cs" />
         <Compile Include="UnityEmulator.cs" />
         <Compile Include="MonoBehaviour.cs" />
