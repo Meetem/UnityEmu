@@ -33,13 +33,11 @@ namespace UnityEngine
 
         public void Start()
         {
-            Console.WriteLine("Start unity");
             clock.Start();
         }
 
         public void Stop()
         {
-            Console.WriteLine("Stop unity");
             clock.Stop();
         }
 
