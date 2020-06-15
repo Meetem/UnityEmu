@@ -108,13 +108,13 @@ namespace UnityEngine
             return go;
         }
 
-        public T NewGameObject<T>(T original = null)
+        public T NewGameObject<T>(T original = null, Action<ComponentInitialize<T>> initialize = null)
             where T: MonoBehaviour, new()
         {
             var go = new GameObject();
             gameObjects.Add(go);
             
-            var component = go.AddComponent<T>();
+            var component = go.AddComponent<T>(initialize);
             return component;
         }
     }

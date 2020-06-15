@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,10 +27,13 @@ namespace UnityEngine
             return emu.NewGameObject<T>(original);
         }
         
-        public T AddComponent<T>()
+        public T AddComponent<T>(Action<ComponentInitialize<T>> initialization = null)
             where T : MonoBehaviour, new()
         {
             var newComponent = new T {gameObject = this};
+            if (initialization != null)
+                initialization.Invoke(new ComponentInitialize<T>(newComponent));
+            
             newComponent.CallAwake();
             newComponent.CallOnEnable();
             newComponent.CallStart();
