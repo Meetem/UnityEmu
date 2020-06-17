@@ -74,5 +74,35 @@ namespace UnityEngine
 
             return objects.Select((x) => x as T).ToArray();
         }
+
+        internal void RemoveComponent(MonoBehaviour component)
+        {
+            if (component == null)
+                return;
+            
+            for (int i = 0; i < components.Count; i++)
+            {
+                var c = components[i];
+                if (c == component)
+                {
+                    c.enabled = false;
+                    c.DestroyObject();
+                    
+                    components.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+        
+        internal override void DestroyObject()
+        {
+            for (int i = 0; i < components.Count; i++)
+                components[i].enabled = false;
+            
+            for (int i = 0; i < components.Count; i++)
+                components[i].DestroyObject();
+            
+            components.Clear();
+        }
     }
 }

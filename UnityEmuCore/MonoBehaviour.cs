@@ -127,5 +127,11 @@ namespace UnityEngine
             coroutines.StopAllCoroutines();
             CallMethod(ref onDestroyMethod, "OnDestroy");
         }
+
+        internal override void DestroyObject()
+        {
+            CallOnDestroy();
+            gameObject = null;
+        }
     }
 }

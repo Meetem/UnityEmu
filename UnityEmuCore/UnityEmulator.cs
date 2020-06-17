@@ -38,6 +38,12 @@ namespace UnityEngine
 
         public void Stop()
         {
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                var go = gameObjects[i];
+                go.DestroyObject();
+            }
+            
             clock.Stop();
         }
 
