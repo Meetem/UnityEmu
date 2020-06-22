@@ -3,9 +3,9 @@ using System;
 namespace UnityEngine
 {
     [System.AttributeUsage(System.AttributeTargets.Field)]
-    public class SerializeField : Attribute
+    public class SerializeFieldAttribute : Attribute
     {
-        public SerializeField() : base()
+        public SerializeFieldAttribute() : base()
         {
             
         }

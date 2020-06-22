@@ -4,9 +4,8 @@ using System.Reflection;
 
 namespace UnityEngine
 {
-    public class MonoBehaviour : Object
+    public class MonoBehaviour : Component
     {
-        public GameObject gameObject { get; internal set; }
         private bool _enabled = true;
         private UnityEmulatorCoroutines coroutines;
         

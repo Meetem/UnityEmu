@@ -2,6 +2,9 @@ namespace UnityEngine
 {
     public abstract class Object
     {
+        // ReSharper disable once InconsistentNaming
+        public string name { get; set; }
+        
         internal abstract void DestroyObject();
         public static void Destroy(Object obj)
         {

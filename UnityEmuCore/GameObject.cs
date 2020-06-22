@@ -6,6 +6,16 @@ namespace UnityEngine
 {
     public class GameObject : Object
     {
+        /// <summary>
+        /// This property is dummy, always true
+        /// </summary>
+        public bool active { get; internal set; } = true;
+
+        /// <summary>
+        /// This property is dummy, always true
+        /// </summary>
+        public bool activeInHierarchy { get; internal set; } = true;
+        
         internal List<MonoBehaviour> components = new List<MonoBehaviour>();
         private Dictionary<string, List<MonoBehaviour>> componentMapping = new Dictionary<string, List<MonoBehaviour>>();
 
@@ -20,11 +30,11 @@ namespace UnityEngine
             return emu.NewGameObject();
         }
 
-        public static T Instantiate<T>(T original, UnityEmulator onEmulator = null)
+        public static T Instantiate<T>(T original, UnityEmulator onEmulator = null, Action<ComponentInitialize<T>> initialization = null)
             where T: MonoBehaviour, new()
         {
             var emu = onEmulator ?? UnityEmulator.Instance;
-            return emu.NewGameObject<T>(original);
+            return emu.NewGameObject<T>(original, initialization);
         }
         
         public T AddComponent<T>(Action<ComponentInitialize<T>> initialization = null)
